@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('users.index');
+        $data = $this->userService->index($request);
+
+        return view('users.index', $data);
     }
 
     /**
@@ -43,6 +46,7 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $this->userService->store($request->validated());
+
         return redirect()->route('users.index');
     }
 
@@ -54,7 +58,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -65,7 +69,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->userService->edit($id);
+
+        return view('users.edit', $data);
     }
 
     /**
@@ -75,9 +81,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $this->userService->update($request->validated(), $id);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -88,6 +96,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->userService->destroy($id);
+
+        return redirect()->back();
     }
 }

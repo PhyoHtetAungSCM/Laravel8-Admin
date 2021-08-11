@@ -20,7 +20,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Users</h3>
+                        <h3 class="card-title">Create Form</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -56,6 +56,8 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
+                            <a href="{{ route('users.index') }}" class="btn btn-secondary"
+                                type="button">{{ __('Cancel') }}</a>
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>

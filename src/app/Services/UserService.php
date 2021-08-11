@@ -33,6 +33,7 @@ class UserService
     public function edit($id)
     {
         $user = User::findOrFail($id);
+
         return compact('user');
     }
 
