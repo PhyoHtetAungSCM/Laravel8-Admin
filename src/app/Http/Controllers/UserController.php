@@ -98,6 +98,6 @@ class UserController extends Controller
     {
         $this->userService->destroy($id);
 
-        return redirect()->back();
+        return redirect()->route('users.index');
     }
 }

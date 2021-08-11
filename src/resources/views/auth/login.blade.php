@@ -5,8 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Log in</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/theme/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/theme/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -72,6 +85,13 @@
         </div>
     </div>
     <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="/theme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/theme/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
