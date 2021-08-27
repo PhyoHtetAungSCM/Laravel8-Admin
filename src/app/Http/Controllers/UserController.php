@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         $this->userService->store($request->validated());
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'A user was successfully created.');
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
     {
         $this->userService->update($request->validated(), $id);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'A user was successfully updated.');
     }
 
     /**
@@ -98,6 +98,6 @@ class UserController extends Controller
     {
         $this->userService->destroy($id);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'A user was successfully deleted.');
     }
 }

@@ -30,9 +30,13 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
+                    <a href="#" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();" class="nav-link">
+                        Logout
                     </a>
+                    <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -44,7 +48,7 @@
             <a href="#" class="brand-link elevation-4">
                 <img src="/theme/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">Shadow Fiend</span>
             </a>
 
             <!-- Sidebar -->
@@ -70,18 +74,6 @@
                                     Users
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>
-                                    Logout
-                                </p>
-                            </a>
-                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                                @csrf
-                            </form>
                         </li>
                     </ul>
                 </nav>

@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
+    if (auth()->user()) {
+        return redirect()->route('users.index');
+    }
     return view('welcome');
 });
 
@@ -22,6 +25,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->middleware('auth');
 
 require __DIR__ . '/auth.php';

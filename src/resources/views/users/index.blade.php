@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>User Tables</h1>
+                <h1>User List</h1>
             </div>
             <div class="col-sm-6">
                 <a href="{{ route('users.create') }}" type="button" class="btn btn-primary float-right">Create</a>
@@ -16,6 +16,7 @@
 
 <!-- Main content -->
 <section class="content">
+
     <!-- /.row -->
     <div class="row">
         <div class="col-12">
@@ -28,7 +29,7 @@
                             <div class="input-group input-group-sm" style="width: 350px;">
 
                                 <input type="text" name="search" value="{{ request('search') }}"
-                                    class="form-control float-right" placeholder="Search">
+                                    class="form-control float-right" placeholder="Search (with an email)">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -97,6 +98,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <!-- Pagination -->
+                    <div class="row justify-content-end no-gutters px-3 py-3">
+                        {{ $users->appends(request()->query())->links() }}
+                    </div>
+                    <!-- /Pagination -->
                 </div>
                 <!-- /.card-body -->
             </div>
