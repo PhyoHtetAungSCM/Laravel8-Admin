@@ -16,7 +16,7 @@
 
 <!-- Main content -->
 <section class="content">
-
+    <x-alert />
     <!-- /.row -->
     <div class="row">
         <div class="col-12">

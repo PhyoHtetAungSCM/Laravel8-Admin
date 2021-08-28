@@ -2,62 +2,22 @@
 
 namespace Tests\Feature;
 
-use App\Models\PagePosition;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Client;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ClientPagePositionDeleteTest extends TestCase
+class UserDeleteTest extends TestCase
 {
-    use RefreshDatabase, Client;
+    use RefreshDatabase, WithFaker;
 
     /** @test */
-    public function owner_user_can_delete_page_position()
+    public function can_delete_user()
     {
-        $this->signIn('owner');
+        $user = User::factory()->create();
 
-        $this->deletePagePosition();
-    }
-
-    /** @test */
-    public function admin_user_can_delete_page_position()
-    {
-        $this->signIn('admin');
-
-        $this->deletePagePosition();
-    }
-
-    /** @test */
-    public function general_user_cannot_delete_page_position()
-    {
-        $this->signIn('general');
-
-        $pagePosition = PagePosition::factory()->create([
-            'page_id' => $this->page->id,
-        ]);
-
-        $response = $this->delete(route('page_positions.destory', [$this->site->id, $pagePosition->id]), [
-            'delete' => 'delete',
-        ]);
-
-        $response->assertStatus(403);
-    }
-
-    /**
-     * delete page position
-     *
-     * @return response
-     */
-    private function deletePagePosition()
-    {
-        $pagePosition = PagePosition::factory()->create([
-            'page_id' => $this->page->id,
-        ]);
-
-        $this->delete(route('page_positions.destory', [$this->site->id, $pagePosition->id]), [
-            'delete' => 'delete',
-        ]);
-
-        $this->assertSoftDeleted('page_positions', ['id' => $pagePosition->id]);
+        $this->delete(route('users.destroy', $user->id))
+            ->assertRedirect()
+            ->assertSessionHasNoErrors();
     }
 }
